@@ -1,5 +1,5 @@
 class BikeshopsController < ApplicationController
-  def bikeshops_index
-    @bikeshops = ["UBikes", "Full Cycle", "Community Cycles"]
+  def index
+    @bikeshops = Bikeshop.all
   end
 end
