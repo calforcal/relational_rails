@@ -6,4 +6,5 @@ Rails.application.routes.draw do
 
   get "/bikeshops", to: "bikeshops#index"
   get "/bikeshops/:id", to: "bikeshops#show"
+  get "/servicerequests", to: "servicerequests#index"
 end
