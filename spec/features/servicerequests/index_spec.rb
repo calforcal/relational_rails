@@ -8,7 +8,6 @@ RSpec.describe "the Service Requests index page" do
     service_request_3 = Servicerequest.create!(bike_from_shop: true, estimated_cost: 120, customer_name: "Thomas Pidcock", bike_type: "MTB")
 
     visit "/servicerequests"
-    save_and_open_page
 
     expect(page).to have_content("Customer ID: #{service_request_1.id}")
     expect(page).to have_content("Customer Name: #{service_request_1.customer_name}")
