@@ -6,7 +6,7 @@ RSpec.describe "the bikeshops index page" do
     bikeshop_2 = Bikeshop.create!(name: "Full Cycle", employees: 40, rewards_program: true)
 
     visit "/bikeshops"
-    save_and_open_page
+
     expect(page).to have_content(bikeshop_1.name)
     expect(page).to have_content(bikeshop_2.name)
   end
