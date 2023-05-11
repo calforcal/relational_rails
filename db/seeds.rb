@@ -12,6 +12,7 @@ Servicerequest.destroy_all
 bikeshop = Bikeshop.create!(name: "UBikes", employees: 25, rewards_program: false)
 bikeshop_2 = Bikeshop.create!(name: "Full Cycle", employees: 45, rewards_program: true)
 bikeshop_3 = Bikeshop.create!(name: "Community Cycles", employees: 10, rewards_program: false)
+bikeshop_4 = Bikeshop.create!(name: "My Shed", employees: 1, rewards_program: false)
 service_request_1 = Servicerequest.create!(bike_from_shop: true, estimated_cost: 200, customer_name: "Michael Callahan", bike_type: "Road", bikeshop_id: bikeshop.id)
 service_request_2 = Servicerequest.create!(bike_from_shop: false, estimated_cost: 40, customer_name: "Primoz Roglic", bike_type: "Gravel", bikeshop_id: bikeshop_2.id)
 service_request_3 = Servicerequest.create!(bike_from_shop: true, estimated_cost: 120, customer_name: "Thomas Pidcock", bike_type: "MTB", bikeshop_id: bikeshop_3.id)
