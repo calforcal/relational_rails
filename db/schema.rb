@@ -10,18 +10,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_05_10_204751) do
+ActiveRecord::Schema[7.0].define(version: 2023_05_11_202110) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "bikeshops", force: :cascade do |t|
-    t.integer "bikeshop_id"
     t.string "name"
     t.integer "employees"
     t.boolean "rewards_program"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["bikeshop_id"], name: "index_bikeshops_on_bikeshop_id"
   end
 
   create_table "servicerequests", force: :cascade do |t|
@@ -31,6 +29,9 @@ ActiveRecord::Schema[7.0].define(version: 2023_05_10_204751) do
     t.string "bike_type"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "bikeshop_id", null: false
+    t.index ["bikeshop_id"], name: "index_servicerequests_on_bikeshop_id"
   end
 
+  add_foreign_key "servicerequests", "bikeshops"
 end

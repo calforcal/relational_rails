@@ -1,0 +1,11 @@
+<h1><%= @bikeshop.name =%> Service Requests</h1>
+
+<% @bikeshop.servicerequests.each do |request| %>
+  <ul>
+    <li>Customer Name: <%= request.customer_name =%></li>
+    <li>Customer ID: <%= request.id =%></li>
+    <li>Bike Type: <%= request.bike_type =%></li>
+    <li>Estimated Cost: <%= request.estimated_cost =%></li>
+    <li>Bike from Shop: <%= request.bike_from_shop =%></li>
+  </ul>
+<% end %>

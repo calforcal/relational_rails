@@ -1,7 +1,7 @@
 require "rails_helper"
 
 RSpec.describe "the bikeshops show page" do
-  it "displays the name of each bikeshop in the system" do
+  it "displays the attributes of the selected bike shop" do
     bikeshop_1 = Bikeshop.create!(name: "UBikes", employees: 25, rewards_program: false)
     bikeshop_2 = Bikeshop.create!(name: "Full Cycle", employees: 40, rewards_program: true)
 
@@ -13,5 +13,9 @@ RSpec.describe "the bikeshops show page" do
     expect(page).to have_content("Rewards Program: #{bikeshop_1.rewards_program}")
     expect(page).to have_content("Created At: #{bikeshop_1.created_at}")
     expect(page).to have_content("Updated At: #{bikeshop_1.updated_at}")
+  end
+
+  it "displays the service requests associated with the bike shop" do
+    
   end
 end
