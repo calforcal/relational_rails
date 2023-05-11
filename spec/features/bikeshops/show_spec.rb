@@ -15,7 +15,14 @@ RSpec.describe "the bikeshops show page" do
     expect(page).to have_content("Updated At: #{bikeshop_1.updated_at}")
   end
 
-  it "displays the service requests associated with the bike shop" do
-    
+  it "displays the number of service requests associated with the bike shop" do
+    bikeshop = Bikeshop.create!(name: "UBikes", employees: 25, rewards_program: false)
+    service_request_1 = Servicerequest.create!(bike_from_shop: true, estimated_cost: 200, customer_name: "Michael Callahan", bike_type: "Road", bikeshop_id: bikeshop.id)
+    service_request_2 = Servicerequest.create!(bike_from_shop: false, estimated_cost: 40, customer_name: "Primoz Roglic", bike_type: "Road", bikeshop_id: bikeshop.id)
+    service_request_3 = Servicerequest.create!(bike_from_shop: true, estimated_cost: 120, customer_name: "Thomas Pidcock", bike_type: "MTB", bikeshop_id: bikeshop.id)
+
+    visit "/bikeshops/#{bikeshop.id}"
+
+    expect(page).to have_content("Service Requests: 3")
   end
 end

@@ -12,7 +12,7 @@ RSpec.describe "Bikeshops' Service Requests" do
     service_request_5 = Servicerequest.create!(bike_from_shop: false, estimated_cost: 250, customer_name: "Joao Almeida", bike_type: "Road", bikeshop_id: bikeshop_2.id)
 
     visit "/bikeshops/#{bikeshop.id}/servicerequests"
-    save_and_open_page
+
     expect(page).to have_content("Customer ID: #{service_request_1.id}")
     expect(page).to have_content("Customer Name: #{service_request_1.customer_name}")
     expect(page).to have_content("Bike Type: #{service_request_1.bike_type}")
