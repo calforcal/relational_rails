@@ -78,4 +78,32 @@ RSpec.describe "the bikeshops show page" do
     expect(page).to have_content("#{@bikeshop.name}")
     expect(page).to have_content("#{@bikeshop_2.name}")
   end
+
+  it "displays a link to the BikeShops ServiceRequests Page" do
+
+    visit "/bikeshops/#{@bikeshop.id}"
+
+    expect(page.has_link?).to be(true)
+    expect(page).to have_content("Service Requests: #{@bikeshop.request_count}")
+
+    click_link("Service Requests: #{@bikeshop.request_count}")
+
+    expect(page).to have_content("Customer ID: #{@service_request_1.id}")
+    expect(page).to have_content("Customer Name: #{@service_request_1.customer_name}")
+    expect(page).to have_content("Bike Type: #{@service_request_1.bike_type}")
+    expect(page).to have_content("Estimated Cost: #{@service_request_1.estimated_cost}")
+    expect(page).to have_content("Bike from Shop: #{@service_request_1.bike_from_shop}")
+    
+    expect(page).to have_content("Customer ID: #{@service_request_2.id}")
+    expect(page).to have_content("Customer Name: #{@service_request_2.customer_name}")
+    expect(page).to have_content("Bike Type: #{@service_request_2.bike_type}")
+    expect(page).to have_content("Estimated Cost: #{@service_request_2.estimated_cost}")
+    expect(page).to have_content("Bike from Shop: #{@service_request_2.bike_from_shop}")
+
+    expect(page).to have_content("Customer ID: #{@service_request_3.id}")
+    expect(page).to have_content("Customer Name: #{@service_request_3.customer_name}")
+    expect(page).to have_content("Bike Type: #{@service_request_3.bike_type}")
+    expect(page).to have_content("Estimated Cost: #{@service_request_3.estimated_cost}")
+    expect(page).to have_content("Bike from Shop: #{@service_request_3.bike_from_shop}")
+  end
 end
