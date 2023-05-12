@@ -1,5 +1,8 @@
+<a href="/bikeshops"><h4> All Bike Shops</h4></a>
 <a href="/servicerequests"><h4>All Service Requests</h4></a>
 <h1>Bike Shops</h1>
+<ul>
 <% @bikeshops.order_shops.each do |bikeshop| %>
-  <a href="/bikeshops/<%= bikeshop.id =%>"><h3>Bike Shop: <%= bikeshop.name =%></h3></a>
+  <a href="/bikeshops/<%= bikeshop.id =%>"><li><h3><%= bikeshop.name =%></h3></li></a>
 <% end %>
+</ul>
