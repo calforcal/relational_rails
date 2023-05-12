@@ -61,4 +61,17 @@ RSpec.describe "the bikeshops index page" do
     expect(page).to have_content("Customer Name: #{@service_request_5.customer_name}")
     expect(page).to have_content("Estimated Cost: #{@service_request_5.estimated_cost}")
   end
+
+  it "displays a link to the BikeShops Index Page" do
+
+    visit "/bikeshops"
+
+    expect(page.has_link?).to be(true)
+    expect(page).to have_content("All Bike Shops")
+
+    click_link("All Bike Shops")
+
+    expect(page).to have_content("#{@bikeshop.name}")
+    expect(page).to have_content("#{@bikeshop_2.name}")
+  end
 end
