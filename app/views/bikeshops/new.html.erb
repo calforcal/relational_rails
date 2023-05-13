@@ -1,0 +1,8 @@
+<form action ="/bikeshops" method="post">
+  <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+  <h4>Enter a new Bike Shop:</h4>
+  <h5>Shop Name: </h5><input type="text" name="bikeshop[name]"><br/>
+  <h5>Number of Employees:</h5><textarea name="bikeshop[employees]"></textarea><br/>
+  <h5>Rewards Program?:</h5><textarea name="bikeshop[rewards_program]"></textarea><br/>
+  <input id="submit" type="submit"/>
+</form>
