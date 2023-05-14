@@ -1,0 +1,9 @@
+<form action="/bikeshops/<%= @bikeshop.id =%>" method="post">
+  <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token =%>">
+  <input type="hidden" name="_method" value="PATCH" />
+  <h4>Edit</h4>
+  <h5>Shop Name: </h5><input type="text" name="bikeshop[name]" value="<%= @bikeshop.name =%>"><br/>
+  <h5>Number of Employees:</h5><input  type="number" name="bikeshop[employees]" value="<%= @bikeshop.employees =%>"></textarea><br/>
+  <h5>Rewards Program:</h5><input type="boolean" name="bikeshop[rewards_program]" value="<%= @bikeshop.rewards_program =%>"></textarea><br/>
+  <input id="submit" type="submit"/>
+</form>
