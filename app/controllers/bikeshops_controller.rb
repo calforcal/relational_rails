@@ -19,4 +19,19 @@ class BikeshopsController < ApplicationController
     bikeshop.save
     redirect_to "/bikeshops"
   end
+
+  def edit
+    @bikeshop = Bikeshop.find(params[:id])
+  end
+
+  def update
+    bikeshop = Bikeshop.find(params[:id])
+    bikeshop.update({
+      name: params[:bikeshop][:name],
+      employees: params[:bikeshop][:employees].to_i,
+      rewards_program: params[:bikeshop][:rewards_program]
+    })
+    bikeshop.save
+    redirect_to "/bikeshops/#{bikeshop.id}"
+  end
 end

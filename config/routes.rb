@@ -8,6 +8,8 @@ Rails.application.routes.draw do
   get "/bikeshops/new", to: "bikeshops#new"
   post "/bikeshops", to: "bikeshops#create"
   get "/bikeshops/:id", to: "bikeshops#show"
+  get "/bikeshops/:id/edit", to: "bikeshops#edit"
+  patch "/bikeshops/:id", to: "bikeshops#update"
   get "/servicerequests", to: "servicerequests#index"
   get "/servicerequests/:id", to: "servicerequests#show"
   get "/bikeshops/:id/servicerequests", to: "bikeshop_servicerequests#index"
