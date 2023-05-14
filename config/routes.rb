@@ -13,4 +13,6 @@ Rails.application.routes.draw do
   get "/servicerequests", to: "servicerequests#index"
   get "/servicerequests/:id", to: "servicerequests#show"
   get "/bikeshops/:id/servicerequests", to: "bikeshop_servicerequests#index"
+  get "/bikeshops/:id/servicerequests/new", to: "bikeshop_servicerequests#new"
+  post "/bikeshops/:id/servicerequests/new", to: "bikeshop_servicerequests#create"
 end
