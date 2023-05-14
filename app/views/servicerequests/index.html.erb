@@ -2,7 +2,7 @@
 <a href="/servicerequests"><h4>All Service Requests</h4></a>
 <h1>Service Requests</h1>
 
-<% @servicerequests.each do |request| %>
+<% @servicerequests.filter_bike_from_shop.each do |request| %>
   <ul>
     <li>Customer ID: <%= request.id =%></li>
     <li>Shop ID: <%= request.bikeshop_id =%></li>
