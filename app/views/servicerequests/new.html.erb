@@ -1,0 +1,15 @@
+<%= form_with url: "/bikeshops/#{@bikeshop.id}/servicerequests", method: :post, local: true do |form| =%>
+  <%= form.label :customer_name %>
+  <%= form.text_field :customer_name %>
+
+  <%= form.label :bike_type %>
+  <%= form.text_field :bike_type %>
+
+  <%= form.label :estimated_cost %>
+  <%= form.text_field :estimated_cost %>
+
+  <%= form.label :bike_from_shop %>
+  <%= form.text_field :bike_from_shop %>
+
+  <%= form.submit "Create Service Request" %>
+<% end %>

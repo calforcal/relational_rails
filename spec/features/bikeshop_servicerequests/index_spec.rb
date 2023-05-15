@@ -5,7 +5,7 @@ RSpec.describe "Bikeshops' Service Requests" do
     @bikeshop = Bikeshop.create!(name: "UBikes", employees: 25, rewards_program: false)
     @service_request_1 = Servicerequest.create!(bike_from_shop: true, estimated_cost: 200, customer_name: "Michael Callahan", bike_type: "Road", bikeshop_id: @bikeshop.id)
     @service_request_2 = Servicerequest.create!(bike_from_shop: true, estimated_cost: 40, customer_name: "Primoz Roglic", bike_type: "Road", bikeshop_id: @bikeshop.id)
-    @service_request_3 = Servicerequest.create!(bike_from_shop: true, estimated_cost: 120, customer_name: "Thomas Pidcock", bike_type: "MTB", bikeshop_id: @bikeshop.id)
+    @service_request_3 = Servicerequest.create!(bike_from_shop: true, estimated_cost: 120, customer_name: "Alfred Pidcock", bike_type: "MTB", bikeshop_id: @bikeshop.id)
 
     @bikeshop_2 = Bikeshop.create!(name: "Full Cycle", employees: 45, rewards_program: true)
     @service_request_4 = Servicerequest.create!(bike_from_shop: true, estimated_cost: 70, customer_name: "Tadej Pogacar", bike_type: "Fixie", bikeshop_id: @bikeshop_2.id)
@@ -89,5 +89,19 @@ RSpec.describe "Bikeshops' Service Requests" do
 
     expect(page).to have_content("#{@bikeshop.name}")
     expect(page).to have_content("#{@bikeshop_2.name}")
+  end
+
+  it "can sort service requests alphabetically when link is clicked" do
+    visit "/bikeshops/#{@bikeshop.id}/servicerequests"
+
+    expect(@service_request_1.customer_name).to appear_before(@service_request_2.customer_name)
+    expect(@service_request_2.customer_name).to appear_before(@service_request_3.customer_name)
+
+    expect(page.has_link?).to be(true)
+    expect(page).to have_content("Alphabetical")
+    click_link("Alphabetical")
+
+    expect(@service_request_3.customer_name).to appear_before(@service_request_1.customer_name)
+    expect(@service_request_1.customer_name).to appear_before(@service_request_2.customer_name)
   end
 end

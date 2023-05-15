@@ -1,9 +1,0 @@
-<form action ="/bikeshops/<%= @bikeshop.id =%>/servicerequests/new" method="post">
-  <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
-  <h4>Enter a new Service Request:</h4>
-  <h5>Customer Name: </h5><input type="text" name="servicerequest[customer_name]"></textarea><br/>
-  <h5>Bike Type:</h5><input type="text" name="servicerequest[bike_type]"></textarea><br/>
-  <h5>Estimated Cost:</h5><input type="integer" name="servicerequest[estimated_cost]"></textarea><br/>
-  <h5>Bike from Shop:</h5><input type="boolean" name="servicerequest[bike_from_shop]"></textarea><br/>
-  <input id="submit" type="submit"/>
-</form>

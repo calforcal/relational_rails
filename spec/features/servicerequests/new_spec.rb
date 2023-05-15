@@ -15,11 +15,11 @@ RSpec.describe "Creating a new Service Request for a BikeShop" do
     click_link("Create Service Request")
     expect(page).to have_current_path("/bikeshops/#{@bikeshop.id}/servicerequests/new")
 
-    fill_in "servicerequest[bike_from_shop]", with: true
-    fill_in "servicerequest[estimated_cost]", with: 100
-    fill_in "servicerequest[customer_name]", with: 'Test Test'
-    fill_in "servicerequest[bike_type]", with: "Road"
-    click_on("submit")
+    fill_in "Bike from shop", with: true
+    fill_in "Estimated cost", with: 100
+    fill_in "Customer name", with: 'Test Test'
+    fill_in "Bike type", with: "Road"
+    click_on("Create Service Request")
 
     expect(page).to have_current_path("/bikeshops/#{@bikeshop.id}/servicerequests")
 
