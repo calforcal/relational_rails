@@ -83,4 +83,47 @@ RSpec.describe "the Service Requests index page" do
     expect(page).to have_content("#{@bikeshop.name}")
     expect(page).to have_content("#{@bikeshop_2.name}")
   end
+
+  it "displays a link to update each service request" do
+    visit "/servicerequests"
+
+    expect(page.has_link?).to be(true)
+    expect(page).to have_content("Update Customer ID: #{@service_request_1.id} Service Request")
+    click_link("Update Customer ID: #{@service_request_1.id} Service Request")
+
+    expect(current_path).to eq("/servicerequests/#{@service_request_1.id}/edit")
+    
+    visit "/servicerequests"
+
+    expect(page.has_link?).to be(true)
+    expect(page).to have_content("Update Customer ID: #{@service_request_2.id} Service Request")
+    click_link("Update Customer ID: #{@service_request_2.id} Service Request")
+
+    expect(current_path).to eq("/servicerequests/#{@service_request_2.id}/edit")
+
+    visit "/servicerequests"
+
+    expect(page.has_link?).to be(true)
+    expect(page).to have_content("Update Customer ID: #{@service_request_3.id} Service Request")
+    click_link("Update Customer ID: #{@service_request_3.id} Service Request")
+
+    expect(current_path).to eq("/servicerequests/#{@service_request_3.id}/edit")
+    
+    visit "/servicerequests"
+
+    expect(page.has_link?).to be(true)
+    expect(page).to have_content("Update Customer ID: #{@service_request_4.id} Service Request")
+    click_link("Update Customer ID: #{@service_request_4.id} Service Request")
+
+    expect(current_path).to eq("/servicerequests/#{@service_request_4.id}/edit")
+    
+    visit "/servicerequests"
+
+    expect(page.has_link?).to be(true)
+    expect(page).to have_content("Update Customer ID: #{@service_request_5.id} Service Request")
+    click_link("Update Customer ID: #{@service_request_5.id} Service Request")
+
+    expect(current_path).to eq("/servicerequests/#{@service_request_5.id}/edit")
+
+  end
 end
