@@ -3,7 +3,8 @@
 <h1>Bike Shops</h1>
 <ul>
 <% @bikeshops.order_shops.each do |bikeshop| %>
-  <a href="/bikeshops/<%= bikeshop.id =%>"><li><h3><%= bikeshop.name =%></h3></li></a>
+  <a href="/bikeshops/<%= bikeshop.id =%>"><li><h3><%= bikeshop.name =%></a></h3>
+  <h6><%= link_to "Update #{bikeshop.name}", "/bikeshops/#{bikeshop.id}/edit" =%></h6></li>
 <% end %>
 </ul>
 

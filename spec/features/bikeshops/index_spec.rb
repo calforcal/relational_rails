@@ -74,4 +74,21 @@ RSpec.describe "the bikeshops index page" do
     expect(page).to have_content("#{@bikeshop.name}")
     expect(page).to have_content("#{@bikeshop_2.name}")
   end
+
+  it "displays a link to edit each bike shop" do
+
+    visit "/bikeshops"
+
+    expect(page.has_link?).to be(true)
+    expect(page).to have_content("Update #{@bikeshop.name}")
+    expect(page).to have_content("Update #{@bikeshop_2.name}")
+
+    click_link("Update #{@bikeshop.name}")
+    expect(current_path).to eq("/bikeshops/#{@bikeshop.id}/edit")
+
+    visit "/bikeshops"
+
+    click_link("Update #{@bikeshop_2.name}")
+    expect(current_path).to eq("/bikeshops/#{@bikeshop_2.id}/edit")
+  end
 end
