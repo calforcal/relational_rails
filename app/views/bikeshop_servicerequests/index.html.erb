@@ -2,6 +2,8 @@
 <a href="/servicerequests"><h4> All Service Requests</h4></a>
 <h1><%= @bikeshop.name =%> Service Requests</h1>
 
+<a href="/bikeshops/<%= @bikeshop.id =%>/servicerequests"<h5>Alphabetical</h5></a>
+
 <% @bikeshop.servicerequests.each do |request| %>
   <ul>
     <li>Customer Name: <%= request.customer_name =%></li>

@@ -15,6 +15,7 @@ Rails.application.routes.draw do
   get "/servicerequests/:id/edit", to: "servicerequests#edit"
   patch "/servicerequests/:id", to: "servicerequests#update"
   get "/bikeshops/:id/servicerequests", to: "bikeshop_servicerequests#index"
-  get "/bikeshops/:id/servicerequests/new", to: "bikeshop_servicerequests#new"
-  post "/bikeshops/:id/servicerequests/new", to: "bikeshop_servicerequests#create"
+  get "/bikeshops/:id/servicerequests/new", to: "servicerequests#new"
+  get "/bikeshops/:id/servicerequests/alphabetical", to: "bikeshop_servicerequests#index"
+  post "/bikeshops/:id/servicerequests", to: "servicerequests#create"
 end
