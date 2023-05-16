@@ -33,6 +33,12 @@ class ServicerequestsController < ApplicationController
     redirect_to "/servicerequests/#{request.id}"
   end
 
+  def destroy
+    request = Servicerequest.find(params[:id])
+    request.destroy
+    redirect_to "/servicerequests"
+  end
+
 private
   def bikeshop_servicerequests_params
     params.permit(:customer_name, :bike_from_shop, :bike_type, :estimated_cost)

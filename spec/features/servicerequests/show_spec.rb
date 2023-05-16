@@ -75,4 +75,28 @@ RSpec.describe "the Service Requests show page" do
     expect(page).to have_content("#{@bikeshop.name}")
     expect(page).to have_content("#{@bikeshop_2.name}")
   end
+
+  it "displays a button to delete that service request" do
+    delete_bikeshop = Bikeshop.create!(name: "UBikes", employees: 25, rewards_program: false)
+    delete_request = Servicerequest.create!(bike_from_shop: true, estimated_cost: 200, customer_name: "Deleting This", bike_type: "Delete!", bikeshop_id: delete_bikeshop.id)
+
+    visit "/servicerequests"
+
+    expect(page).to have_content(delete_request.customer_name)
+    expect(page).to have_content("Customer ID: #{delete_request.id}")
+    expect(page).to have_content(@service_request_1.customer_name)
+
+    visit "/servicerequests/#{delete_request.id}"
+    
+    expect(page.has_button?).to be(true)
+    expect(page).to have_button("Delete Service Request")
+    
+    click_button("Delete Service Request")
+
+    expect(current_path).to eq("/servicerequests")    
+    expect(page).to_not have_content(delete_request.customer_name)
+    expect(page).to_not have_content("Shop ID: #{delete_request.id}")
+
+    expect(page).to have_content(@service_request_1.customer_name)
+  end
 end
