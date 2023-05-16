@@ -10,5 +10,6 @@
   <li>Updated At: <%= @bikeshop.updated_at =%></li>
 </ul>
 <a href="/bikeshops/<%= @bikeshop.id =%>/edit"><h5>Update Shop</h5></a>
+<h5><%= button_to "Delete #{@bikeshop.name}", "/bikeshops/#{@bikeshop.id}", method: :delete=%></h5>
 
 <a href="/bikeshops/<%= @bikeshop.id =%>/servicerequests"><h3>Service Requests: <%= @bikeshop.request_count =%></h3></a>
