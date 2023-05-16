@@ -1,8 +1,7 @@
-<a href="/bikeshops"><h4> All Bike Shops</h4></a>
-<a href="/servicerequests"><h4> All Service Requests</h4></a>
 <h1><%= @bikeshop.name =%> Service Requests</h1>
 
-<a href="/bikeshops/<%= @bikeshop.id =%>/servicerequests?sorted=true"<h5>Alphabetical</h5></a>
+<%= link_to "Alphabetical", "/bikeshops/#{@bikeshop.id}/servicerequests?sorted=true" =%>
+
 <%= form_with url: "/bikeshops/#{@bikeshop.id}/servicerequests?limit=true", method: :get, local: true do |form| =%>
   <%= form.label :cost_filter, "Return Estimated Cost Higher Than: " =%>
   <%= form.text_field :cost_filter =%>
@@ -21,4 +20,4 @@
 <% end %>
 
 
-<a href="/bikeshops/<%= @bikeshop.id =%>/servicerequests/new"><h4>Create Service Request</h4></a>
+<%= link_to "Create Service Request", "/bikeshops/#{@bikeshop.id}/servicerequests/new" =%>

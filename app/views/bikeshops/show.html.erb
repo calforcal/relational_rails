@@ -1,5 +1,3 @@
-<a href="/bikeshops"><h4> All Bike Shops</h4></a>
-<a href="/servicerequests"><h4>All Service Requests</h4></a>
 <h1><%= @bikeshop.name =%></h1>
 <h3>Details</h3>
 <ul>
@@ -13,3 +11,4 @@
 <h5><%= button_to "Delete #{@bikeshop.name}", "/bikeshops/#{@bikeshop.id}", method: :delete=%></h5>
 
 <a href="/bikeshops/<%= @bikeshop.id =%>/servicerequests"><h3>Service Requests: <%= @bikeshop.request_count =%></h3></a>
+
