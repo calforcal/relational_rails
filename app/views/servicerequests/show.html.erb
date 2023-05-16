@@ -8,6 +8,5 @@
   <li>Bike from Shop: <%= @servicerequest.bike_from_shop =%></li>
 </ul>
 
-<h5><%= link_to "Delete Service Request", "/servicerequests/#{@servicerequest.id}", method: :delete =%></h5>
-
+<h5><%= button_to "Delete Service Request", "/servicerequests/#{@servicerequest.id}", method: :delete =%></h5>
 <a href="/servicerequests/<%= @servicerequest.id =%>/edit"><h5>Update Service Request</h5></a>
