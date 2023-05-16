@@ -34,5 +34,17 @@ RSpec.describe Servicerequest, type: :model do
         expect(Servicerequest.all.alphabetical_sort).to eq(filtered_expected)
       end
     end
+
+    describe "self.limit_by_estimated_cost" do
+      it "can filter out records that are less than the parameter given" do
+        expected = [@service_request_1, @service_request_2, @service_request_3]
+
+        expect(Servicerequest.all).to eq(expected)
+
+        filtered_expected = [@service_request_1, @service_request_3]
+
+        expect(Servicerequest.all.limit_by_estimated_cost(100)).to eq(filtered_expected)
+      end
+    end
   end
 end

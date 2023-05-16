@@ -8,4 +8,8 @@ class Servicerequest < ApplicationRecord
   def self.alphabetical_sort
     order(customer_name: :asc)
   end
+
+  def self.limit_by_estimated_cost(num)
+    where("estimated_cost > ?", num.to_i )
+  end
 end

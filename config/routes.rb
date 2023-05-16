@@ -19,5 +19,6 @@ Rails.application.routes.draw do
   get "/bikeshops/:id/servicerequests", to: "bikeshop_servicerequests#index"
   get "/bikeshops/:id/servicerequests/new", to: "servicerequests#new"
   get "/bikeshops/:id/servicerequests?sorted=true", to: "bikeshop_servicerequests#index"
+  get "/bikeshops/:id/servicerequests?limit=true", to: "bikeshop_servicerequests#index"
   post "/bikeshops/:id/servicerequests", to: "servicerequests#create"
 end
