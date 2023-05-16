@@ -10,6 +10,7 @@ Rails.application.routes.draw do
   get "/bikeshops/:id", to: "bikeshops#show"
   get "/bikeshops/:id/edit", to: "bikeshops#edit"
   patch "/bikeshops/:id", to: "bikeshops#update"
+  delete "/bikeshops/:id", to: "bikeshops#destroy"
   get "/servicerequests", to: "servicerequests#index"
   get "/servicerequests/:id", to: "servicerequests#show"
   get "/servicerequests/:id/edit", to: "servicerequests#edit"

@@ -34,4 +34,10 @@ class BikeshopsController < ApplicationController
     bikeshop.save
     redirect_to "/bikeshops/#{bikeshop.id}"
   end
+
+  def destroy
+    bikeshop = Bikeshop.find(params[:id])
+    bikeshop.destroy
+    redirect_to "/bikeshops"
+  end
 end
