@@ -98,14 +98,30 @@ RSpec.describe "the bikeshops index page" do
     visit "/bikeshops"
 
     expect(page.has_button?).to be(true)
-    expect(page).to have_content(@bikeshop.name)
+    expect(page).to have_content(delete_shop.name)
     expect(page).to have_content(@bikeshop_2.name)
-    expect(page).to have_content("Delete #{@bikeshop.name}")
+    expect(page).to have_content("Delete #{delete_shop.name}")
     expect(page).to have_content("Delete #{@bikeshop_2.name}")
 
     click_button("Delete #{delete_shop.name}")
 
     expect(page).to_not have_content(delete_shop.name)
     expect(page).to have_content(@bikeshop_2.name)
+  end
+
+  it "deletes all children when you delete a parent" do
+    delete_shop = Bikeshop.create!(name: "The Shed", employees: 25, rewards_program: false)
+    delete_request = Servicerequest.create!(bike_from_shop: true, estimated_cost: 1200, customer_name: "Bingo", bike_type: "Unicycle", bikeshop_id: delete_shop.id)
+
+    visit "/servicerequests"
+    expect(page).to have_content("Customer Name: #{delete_request.customer_name}")
+    expect(page).to have_content("Bike Type: #{delete_request.bike_type}")
+
+    visit "/bikeshops"
+    click_button("Delete #{delete_shop.name}")
+
+    visit "/servicerequests"
+    expect(page).to_not have_content("Customer Name: #{delete_request.customer_name}")
+    expect(page).to_not have_content("Bike Type: #{delete_request.bike_type}")
   end
 end

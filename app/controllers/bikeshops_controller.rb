@@ -37,6 +37,7 @@ class BikeshopsController < ApplicationController
 
   def destroy
     bikeshop = Bikeshop.find(params[:id])
+    bikeshop.servicerequests.destroy_all
     bikeshop.destroy
     redirect_to "/bikeshops"
   end
