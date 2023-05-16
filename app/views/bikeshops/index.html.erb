@@ -3,8 +3,9 @@
 <h1>Bike Shops</h1>
 <ul>
 <% @bikeshops.order_shops.each do |bikeshop| %>
-  <a href="/bikeshops/<%= bikeshop.id =%>"><li><h3><%= bikeshop.name =%></a></h3>
-  <h6><%= link_to "Update #{bikeshop.name}", "/bikeshops/#{bikeshop.id}/edit" =%></h6></li>
+  <a href="/bikeshops/<%= bikeshop.id =%>"><li><h3><%= bikeshop.name =%></a></h3></li>
+  <h5><%= link_to "Update #{bikeshop.name}", "/bikeshops/#{bikeshop.id}/edit" =%></h5>
+  <h5><%= button_to "Delete #{bikeshop.name}", "/bikeshops/#{bikeshop.id}", method: :delete=%></h5></li>
 <% end %>
 </ul>
 

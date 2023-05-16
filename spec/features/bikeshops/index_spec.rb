@@ -91,4 +91,21 @@ RSpec.describe "the bikeshops index page" do
     click_link("Update #{@bikeshop_2.name}")
     expect(current_path).to eq("/bikeshops/#{@bikeshop_2.id}/edit")
   end
+
+  it "displays a link to delete each bike shop" do
+    delete_shop = Bikeshop.create!(name: "The Shed", employees: 25, rewards_program: false)
+
+    visit "/bikeshops"
+
+    expect(page.has_button?).to be(true)
+    expect(page).to have_content(@bikeshop.name)
+    expect(page).to have_content(@bikeshop_2.name)
+    expect(page).to have_content("Delete #{@bikeshop.name}")
+    expect(page).to have_content("Delete #{@bikeshop_2.name}")
+
+    click_button("Delete #{delete_shop.name}")
+
+    expect(page).to_not have_content(delete_shop.name)
+    expect(page).to have_content(@bikeshop_2.name)
+  end
 end
