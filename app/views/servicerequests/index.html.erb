@@ -13,4 +13,5 @@
   </ul>
 
   <a href="/servicerequests/<%= request.id =%>/edit"><h5>Update Customer ID: <%= request.id =%> Service Request</h5></a>
+  <h5><%= button_to "Delete Customer ID: #{request.id} Service Request", "/servicerequests/#{request.id}", method: :delete =%></h5>
 <% end %>

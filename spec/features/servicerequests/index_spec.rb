@@ -124,6 +124,49 @@ RSpec.describe "the Service Requests index page" do
     click_link("Update Customer ID: #{@service_request_5.id} Service Request")
 
     expect(current_path).to eq("/servicerequests/#{@service_request_5.id}/edit")
+  end
 
+  it "displays a button to delete each service request" do
+
+    visit "/servicerequests"
+
+    expect(page).to have_button("Delete Customer ID: #{@service_request_1.id} Service Request")
+    expect(page).to have_button("Delete Customer ID: #{@service_request_2.id} Service Request")
+    expect(page).to have_button("Delete Customer ID: #{@service_request_3.id} Service Request")
+    expect(page).to have_button("Delete Customer ID: #{@service_request_4.id} Service Request")
+    expect(page).to have_button("Delete Customer ID: #{@service_request_5.id} Service Request")
+
+    expect(page).to have_content("Customer ID: #{@service_request_1.id}")
+    expect(page).to have_content("Customer Name: #{@service_request_1.customer_name}")
+    
+    expect(page).to have_content("Customer ID: #{@service_request_2.id}")
+    expect(page).to have_content("Customer Name: #{@service_request_2.customer_name}")
+
+    expect(page).to have_content("Customer ID: #{@service_request_3.id}")
+    expect(page).to have_content("Customer Name: #{@service_request_3.customer_name}")
+
+    expect(page).to have_content("Customer ID: #{@service_request_4.id}")
+    expect(page).to have_content("Customer Name: #{@service_request_4.customer_name}")
+
+    expect(page).to have_content("Customer ID: #{@service_request_5.id}")
+    expect(page).to have_content("Customer Name: #{@service_request_5.customer_name}")
+
+    click_button("Delete Customer ID: #{@service_request_1.id} Service Request")
+    click_button("Delete Customer ID: #{@service_request_2.id} Service Request")
+
+    expect(page).to_not have_content("Customer ID: #{@service_request_1.id}")
+    expect(page).to_not have_content("Customer Name: #{@service_request_1.customer_name}")
+    
+    expect(page).to_not have_content("Customer ID: #{@service_request_2.id}")
+    expect(page).to_not have_content("Customer Name: #{@service_request_2.customer_name}")
+
+    expect(page).to have_content("Customer ID: #{@service_request_3.id}")
+    expect(page).to have_content("Customer Name: #{@service_request_3.customer_name}")
+
+    expect(page).to have_content("Customer ID: #{@service_request_4.id}")
+    expect(page).to have_content("Customer Name: #{@service_request_4.customer_name}")
+
+    expect(page).to have_content("Customer ID: #{@service_request_5.id}")
+    expect(page).to have_content("Customer Name: #{@service_request_5.customer_name}")
   end
 end
