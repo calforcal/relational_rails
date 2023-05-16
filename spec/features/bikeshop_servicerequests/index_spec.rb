@@ -104,4 +104,22 @@ RSpec.describe "Bikeshops' Service Requests" do
     expect(@service_request_3.customer_name).to appear_before(@service_request_1.customer_name)
     expect(@service_request_1.customer_name).to appear_before(@service_request_2.customer_name)
   end
+
+  it "can take an input and filter records based on estimated cost" do
+    visit "/bikeshops/#{@bikeshop.id}/servicerequests"
+
+    expect(page).to have_content("Customer Name: #{@service_request_1.customer_name}")
+    expect(page).to have_content("Customer Name: #{@service_request_2.customer_name}")
+    expect(page).to have_content("Customer Name: #{@service_request_3.customer_name}")
+
+    expect(page.has_field? "cost_filter").to be(true)
+    expect(page.has_button? "Only return records with more than Estimated Cost").to be(true)
+
+    fill_in :cost_filter, with: 150
+    click_button("Only return records with more than Estimated Cost")
+
+    expect(page).to have_content("Customer Name: #{@service_request_1.customer_name}")
+    expect(page).to_not have_content("Customer Name: #{@service_request_2.customer_name}")
+    expect(page).to_not have_content("Customer Name: #{@service_request_3.customer_name}")
+  end
 end
